@@ -134,7 +134,7 @@ import { TiendasApi } from '../../infraestructura/tiendas-api';
       border-radius: 999px 999px 16px 16px;
       background:
         linear-gradient(180deg, rgba(23, 20, 15, 0) 55%, rgba(23, 20, 15, 0.28)),
-        url('/assets/fondos/portada.jpg') 50% 78% / 135% auto no-repeat,
+        url('/assets/fondos/banner-panaderia.jpg') 38% center / cover no-repeat,
         #e9e4d6;
     }
     .directorio {

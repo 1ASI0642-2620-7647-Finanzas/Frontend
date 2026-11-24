@@ -295,7 +295,7 @@ table.tabla tr:last-child td {
 .formulario-rejilla {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 14px;
+  gap: 14px 14px;
 }
 
 .formulario-rejilla .completo {
@@ -321,6 +321,11 @@ table.tabla tr:last-child td {
 
 mat-form-field {
   width: 100%;
+}
+
+/* Que la etiqueta flotante del primer campo no quede recortada bajo el título del diálogo */
+.mat-mdc-dialog-container .mat-mdc-dialog-title + .mat-mdc-dialog-content {
+  padding-top: 12px;
 }
 
 .aviso-error {
@@ -404,4 +409,11 @@ mat-form-field {
 
 .mat-mdc-chip-option {
   --mat-chip-container-shape-radius: 999px;
+}
+
+/* Enlaces de texto: verde de la marca, con subrayado fino */
+a:not([class]) {
+  color: var(--verde);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
