@@ -1,0 +1,8 @@
+Logotipos de las tiendas (.png o .jpg). El nombre debe coincidir con el campo "logo" de la tienda.
+El campo también acepta una dirección web completa (https://...).
+Los logotipos de la demostración están dibujados por el equipo (no requieren crédito):
+logo-don-pepe.png
+logo-dona-rosa.png
+logo-espiga-dorada.png
+logo-estilo-lucero.png
+logo-salud-vecinal.png

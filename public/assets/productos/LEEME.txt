@@ -1,0 +1,77 @@
+Imágenes de productos y servicios (formato .jpg).
+El nombre del archivo debe coincidir con el campo "imagen" del producto. El campo también acepta una dirección web
+completa (https://...), útil cuando el vendedor agrega un producto sin volver a desplegar la página.
+Si falta la imagen, la aplicación muestra un ícono en su lugar.
+
+Las fotos las descargó el equipo (24/11/2026). Qué debe mostrar cada una está en LISTA_IMAGENES_PRODUCTOS.md
+(en la carpeta raíz del proyecto). Todas son JPEG reales de hasta 800 px por lado.
+
+Nombres esperados por los datos de demostración (68):
+aceite-vegetal.jpg
+agua-mineral.jpg
+alcohol-medicinal.jpg
+alfajor.jpg
+algodon.jpg
+alisado.jpg
+arroz-extra.jpg
+atun-filete.jpg
+avena-hojuelas.jpg
+azucar-rubia.jpg
+balon-gas.jpg
+bidon-agua.jpg
+cafe-vaso.jpg
+canasta-basica.jpg
+cerveza-rubia.jpg
+chicha-morada.jpg
+chocolate-mani.jpg
+corte-caballero.jpg
+corte-dama.jpg
+croissant.jpg
+curitas.jpg
+detergente-polvo.jpg
+empanada-pollo.jpg
+empanadas-docena.jpg
+fideos-spaghetti.jpg
+galletas-soda.jpg
+gasas.jpg
+gaseosa-1-5l.jpg
+gaseosa-cola-2l.jpg
+huevos-granja.jpg
+ibuprofeno.jpg
+jabon-lavar.jpg
+jarabe-tos.jpg
+keke-vainilla.jpg
+keratina.jpg
+leche-evaporada.jpg
+lejia.jpg
+lentejas.jpg
+limpieza-facial.jpg
+manicure.jpg
+maquillaje.jpg
+masaje.jpg
+mascarillas.jpg
+mechas.jpg
+pack-utiles.jpg
+pan-ciabatta.jpg
+pan-frances.jpg
+pan-integral.jpg
+panales.jpg
+papas-fritas.jpg
+papel-higienico.jpg
+paquete-novia.jpg
+paracetamol.jpg
+pasta-dental.jpg
+pedicure.jpg
+peinado.jpg
+pollo-entero.jpg
+queso-fresco.jpg
+shampoo-anticaspa.jpg
+suero-oral.jpg
+tensiometro.jpg
+termometro-digital.jpg
+tinte.jpg
+torta-entera.jpg
+torta-matrimonio.jpg
+torta-tres-leches.jpg
+vitamina-c.jpg
+yogurt-natural.jpg
