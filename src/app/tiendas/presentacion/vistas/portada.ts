@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,7 +35,7 @@ import { TiendasApi } from '../../infraestructura/tiendas-api';
           Consulta tu deuda, tus cuotas y tu historial de compras. Elige tu negocio, ingresa con tu DNI y la clave que
           te dio el vendedor.
         </p>
-        <a mat-flat-button href="#negocios">Elegir mi negocio <mat-icon iconPositionEnd>south</mat-icon></a>
+        <button mat-flat-button type="button" (click)="irANegocios()">Elegir mi negocio <mat-icon iconPositionEnd>south</mat-icon></button>
       </div>
       <div class="heroe-foto" aria-hidden="true"></div>
     </section>
@@ -245,10 +246,16 @@ import { TiendasApi } from '../../infraestructura/tiendas-api';
 export class Portada {
   protected readonly identidad = inject(IdentidadStore);
   private readonly api = inject(TiendasApi);
+  private readonly documento = inject(DOCUMENT);
 
   protected readonly tiendas = signal<TiendaPublica[]>([]);
   protected readonly error = signal<string | null>(null);
   protected readonly giro = (t: TiendaPublica): string => nombreDeGiro(t.giro);
+
+  /** Baja suavemente hasta el directorio. Un enlace «#negocios» no sirve: con `<base href="/">` recarga la ruta. */
+  protected irANegocios(): void {
+    this.documento.getElementById('negocios')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   constructor() {
     this.api.listarPublicas().subscribe({
