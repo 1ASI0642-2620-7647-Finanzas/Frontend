@@ -126,49 +126,62 @@ const MENU_ADMIN: OpcionMenu[] = [
       background: var(--fondo);
     }
     .menu {
-      width: 250px;
-      background: #17402d;
-      color: #fff;
-      border-right: none;
+      width: 256px;
+      background: #f3efe5;
+      color: var(--texto);
+      border-right: 1px solid var(--borde);
+      border-radius: 0;
     }
     .marca {
       display: flex;
       gap: 12px;
       align-items: center;
-      padding: 18px 16px 14px;
-      color: #fff;
+      padding: 22px 18px 18px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--borde);
     }
     .marca strong {
       display: block;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
       line-height: 1.15;
     }
     .marca small {
-      color: #b9d9c8;
+      color: var(--texto-suave);
+      font-size: 0.72rem;
     }
     .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       overflow: hidden;
       flex: none;
-      background: #ffffff22;
+      border: 1px solid var(--borde);
+      background: #fff;
       display: grid;
       place-items: center;
     }
     mat-nav-list {
-      padding: 6px 10px;
+      padding: 10px 12px;
     }
     a.mat-mdc-list-item {
-      --mdc-list-list-item-label-text-color: #e6f2eb;
-      --mat-list-list-item-leading-icon-color: #b9d9c8;
-      --mdc-list-list-item-hover-label-text-color: #fff;
-      border-radius: 12px;
+      --mdc-list-list-item-label-text-color: var(--texto-suave);
+      --mat-list-list-item-leading-icon-color: var(--texto-suave);
+      --mdc-list-list-item-hover-label-text-color: var(--texto);
+      --mat-list-list-item-hover-state-layer-color: transparent;
+      --mat-list-list-item-focus-state-layer-color: transparent;
+      border-radius: 8px;
       margin-bottom: 2px;
     }
+    a.mat-mdc-list-item:hover {
+      background: #ebe6d9;
+    }
     a.mat-mdc-list-item.activo {
-      background: #ffffff1f;
-      --mdc-list-list-item-label-text-color: #fff;
-      --mat-list-list-item-leading-icon-color: #ffd28a;
+      background: #fff;
+      box-shadow: inset 3px 0 0 var(--verde);
+      --mdc-list-list-item-label-text-color: var(--texto);
+      --mat-list-list-item-leading-icon-color: var(--verde);
     }
     .barra {
       background: var(--superficie);

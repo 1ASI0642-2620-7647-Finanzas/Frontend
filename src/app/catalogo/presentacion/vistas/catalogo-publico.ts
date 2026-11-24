@@ -23,6 +23,7 @@ import { CatalogoApi } from '../../infraestructura/catalogo-api';
     <div class="pagina">
       <div class="pagina-encabezado">
         <div>
+          <span class="sobretitulo">Catálogo</span>
           <h2>{{ etiquetas().plural }} y precios</h2>
           <p>Precios en soles. El precio a crédito es el que se aplica cuando compras fiado.</p>
         </div>
@@ -84,46 +85,58 @@ import { CatalogoApi } from '../../infraestructura/catalogo-api';
     }
     .rejilla {
       display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px 22px;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     }
     .completo {
       grid-column: 1 / -1;
     }
     .producto {
       padding: 0;
-      overflow: hidden;
+      border: none;
+      background: transparent;
       display: flex;
       flex-direction: column;
     }
     .foto {
-      height: 150px;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #efebe0;
     }
     .cuerpo {
-      padding: 12px 14px 14px;
+      padding: 14px 2px 0;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
       flex: 1;
     }
     .cuerpo h3 {
-      font-size: 1rem;
-      line-height: 1.25;
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+    .cuerpo .texto-suave {
+      font-size: 0.82rem;
     }
     .precios {
       display: flex;
-      gap: 18px;
-      margin: 4px 0;
+      gap: 24px;
+      margin: 10px 0 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--borde);
     }
     .precios small {
       display: block;
       color: var(--texto-suave);
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
     .precios strong {
-      font-size: 1.1rem;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
     }
     .credito {
       color: var(--ambar);

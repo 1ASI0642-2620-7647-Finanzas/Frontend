@@ -18,45 +18,58 @@ import { TiendasApi } from '../../infraestructura/tiendas-api';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header class="cabecera">
-      <div class="marca"><img src="assets/marca/logo.svg" alt="" class="logo-app" /> Cuaderno de Fiado Digital</div>
+      <div class="marca"><img src="assets/marca/logo.svg" alt="" class="logo-app" /> Cuaderno de Fiado</div>
       @if (identidad.autenticado()) {
-        <a mat-stroked-button [routerLink]="identidad.rutaInicio()"><mat-icon>arrow_forward</mat-icon> Ir a mi panel</a>
+        <a mat-stroked-button [routerLink]="identidad.rutaInicio()">Ir a mi panel <mat-icon iconPositionEnd>arrow_forward</mat-icon></a>
       } @else {
-        <a mat-stroked-button routerLink="/ingresar"><mat-icon>badge</mat-icon> Soy vendedor</a>
+        <a mat-stroked-button routerLink="/ingresar">Soy vendedor</a>
       }
     </header>
 
     <section class="heroe">
-      <h1>El cuaderno de fiado de tu negocio de barrio, ahora digital</h1>
-      <p>
-        Consulta tu deuda, tus cuotas y tu historial de compras. Elige tu negocio, ingresa con tu DNI y la clave que
-        te dio el vendedor.
-      </p>
+      <div class="heroe-texto">
+        <span class="sobretitulo">Para negocios de barrio</span>
+        <h1>El cuaderno de fiado de tu negocio, <em>ahora digital</em></h1>
+        <p>
+          Consulta tu deuda, tus cuotas y tu historial de compras. Elige tu negocio, ingresa con tu DNI y la clave que
+          te dio el vendedor.
+        </p>
+        <a mat-flat-button href="#negocios">Elegir mi negocio <mat-icon iconPositionEnd>south</mat-icon></a>
+      </div>
+      <div class="heroe-foto" aria-hidden="true"></div>
     </section>
 
-    <section class="pagina">
-      <h2>Elige tu negocio</h2>
+    <section class="directorio" id="negocios">
+      <div class="directorio-cabecera">
+        <span class="sobretitulo">Directorio</span>
+        <h2>Elige tu negocio</h2>
+      </div>
       @if (error()) {
         <div class="aviso-error">{{ error() }}</div>
       }
-      <div class="tiendas">
-        @for (tienda of tiendas(); track tienda.id) {
-          <a class="tienda tarjeta" [routerLink]="['/t', tienda.slug]">
-            <div class="logo"><app-imagen carpeta="logos" [src]="tienda.logo" icono="storefront" [alt]="tienda.nombre" /></div>
-            <div>
-              <h3>{{ tienda.nombre }}</h3>
-              <span class="etiqueta-estado neutra">{{ giro(tienda) }}</span>
-              <p class="texto-suave">{{ tienda.direccion }}</p>
-              @if (tienda.telefono) { <p class="texto-suave"><mat-icon inline>call</mat-icon> {{ tienda.telefono }}</p> }
-            </div>
-            <mat-icon class="flecha">chevron_right</mat-icon>
-          </a>
+      <ol class="tiendas">
+        @for (tienda of tiendas(); track tienda.id; let i = $index) {
+          <li>
+            <a class="tienda" [routerLink]="['/t', tienda.slug]">
+              <span class="numero">{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span>
+              <div class="logo"><app-imagen carpeta="logos" [src]="tienda.logo" icono="storefront" [alt]="tienda.nombre" /></div>
+              <div class="datos">
+                <h3>{{ tienda.nombre }}</h3>
+                <p class="texto-suave">
+                  {{ tienda.direccion }}
+                  @if (tienda.telefono) { · {{ tienda.telefono }} }
+                </p>
+              </div>
+              <span class="giro sobretitulo">{{ giro(tienda) }}</span>
+              <mat-icon class="flecha">arrow_forward</mat-icon>
+            </a>
+          </li>
         } @empty {
           @if (!error()) {
-            <div class="vacio tarjeta"><mat-icon>storefront</mat-icon><p>Aún no hay negocios registrados.</p></div>
+            <li class="vacio"><mat-icon>storefront</mat-icon><p>Aún no hay negocios registrados.</p></li>
           }
         }
-      </div>
+      </ol>
     </section>
   `,
   styles: `
@@ -67,76 +80,165 @@ import { TiendasApi } from '../../infraestructura/tiendas-api';
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 20px;
-      background: #fff;
-      border-bottom: 1px solid var(--borde);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 24px;
     }
     .marca {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      color: var(--verde);
-      font-size: 1.1rem;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
     }
     .logo-app {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
     }
     .heroe {
-      background:
-        linear-gradient(135deg, rgba(23, 64, 45, 0.88), rgba(31, 111, 74, 0.8)),
-        url('/assets/fondos/portada.jpg') center / cover no-repeat,
-        #17402d;
-      color: #fff;
-      padding: 44px 20px;
-      text-align: center;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 24px 72px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .heroe-texto {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
     }
     .heroe h1 {
-      max-width: 720px;
-      margin: 0 auto 10px;
-      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+    .heroe h1 em {
+      color: var(--verde);
+      font-style: italic;
     }
     .heroe p {
-      max-width: 620px;
+      margin: 0;
+      max-width: 480px;
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--texto-suave);
+    }
+    .heroe-foto {
+      aspect-ratio: 4 / 5;
+      border-radius: 999px 999px 16px 16px;
+      background:
+        linear-gradient(180deg, rgba(23, 20, 15, 0) 55%, rgba(23, 20, 15, 0.28)),
+        url('/assets/fondos/portada.jpg') 50% 78% / 135% auto no-repeat,
+        #e9e4d6;
+    }
+    .directorio {
+      max-width: 1180px;
       margin: 0 auto;
-      color: #d5eadf;
-      line-height: 1.5;
+      padding: 56px 24px 96px;
+      border-top: 1px solid var(--borde);
+    }
+    .directorio-cabecera {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .directorio-cabecera h2 {
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
     }
     .tiendas {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      margin-top: 14px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--texto);
+    }
+    .tiendas li {
+      border-bottom: 1px solid var(--borde);
     }
     .tienda {
-      display: flex;
-      gap: 14px;
+      display: grid;
+      grid-template-columns: 40px 56px 1fr auto 24px;
+      gap: 20px;
       align-items: center;
+      padding: 20px 8px;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: background 0.2s, padding 0.2s;
     }
     .tienda:hover {
-      transform: translateY(-2px);
+      background: #f3efe5;
+      padding-left: 16px;
     }
-    .tienda h3 {
-      margin-bottom: 2px;
+    .tienda:hover .flecha {
+      transform: translateX(4px);
+      color: var(--verde);
     }
-    .tienda p {
-      margin: 0;
+    .numero {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--texto-suave);
     }
     .logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       overflow: hidden;
-      flex: none;
+      border: 1px solid var(--borde);
+    }
+    .datos h3 {
+      font-size: 1.45rem;
+      margin-bottom: 2px;
+    }
+    .datos p {
+      margin: 0;
+      font-size: 0.9rem;
     }
     .flecha {
-      margin-left: auto;
       color: var(--texto-suave);
+      transition: transform 0.2s, color 0.2s;
+    }
+    .vacio {
+      list-style: none;
+      text-align: center;
+      padding: 40px 0;
+      color: var(--texto-suave);
+    }
+    .cabecera a {
+      flex: none;
+      white-space: nowrap;
+    }
+    @media (max-width: 860px) {
+      .marca {
+        font-size: 1.1rem;
+        white-space: nowrap;
+      }
+      .cabecera {
+        padding: 16px;
+        gap: 8px;
+      }
+      .heroe {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding-top: 16px;
+      }
+      .heroe-foto {
+        aspect-ratio: 16 / 11;
+        border-radius: 200px 200px 14px 14px;
+      }
+      .tienda {
+        grid-template-columns: 56px 1fr 24px;
+        gap: 14px;
+      }
+      .numero,
+      .giro {
+        display: none;
+      }
     }
   `,
 })

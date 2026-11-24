@@ -55,7 +55,7 @@ function nombreMes(iso: string): string {
           </section>
           <section class="tarjeta">
             <h2>Cobros por mes</h2>
-            <app-grafico tipo="line" [etiquetas]="mesesCobros()" [series]="[{ nombre: 'Cobrado', valores: valoresCobros(), color: '#2f6fb0' }]" descripcion="Cobros por mes" />
+            <app-grafico tipo="line" [etiquetas]="mesesCobros()" [series]="[{ nombre: 'Cobrado', valores: valoresCobros(), color: '#2c4a6b' }]" descripcion="Cobros por mes" />
           </section>
           <section class="tarjeta">
             <h2>Ventas por forma de pago</h2>
@@ -63,7 +63,7 @@ function nombreMes(iso: string): string {
           </section>
           <section class="tarjeta">
             <h2>Productos más vendidos</h2>
-            <app-grafico tipo="bar" [horizontal]="true" [etiquetas]="nombresProductos()" [series]="[{ nombre: 'Ventas', valores: montosProductos(), color: '#d98a1c' }]" descripcion="Productos más vendidos" />
+            <app-grafico tipo="bar" [horizontal]="true" [etiquetas]="nombresProductos()" [series]="[{ nombre: 'Ventas', valores: montosProductos(), color: '#a8751c' }]" descripcion="Productos más vendidos" />
           </section>
         </div>
 
@@ -114,7 +114,7 @@ function nombreMes(iso: string): string {
       justify-content: space-between;
       gap: 12px;
       padding: 10px 0;
-      border-bottom: 1px solid #efede4;
+      border-bottom: 1px solid #efebe0;
       text-decoration: none;
       color: inherit;
     }

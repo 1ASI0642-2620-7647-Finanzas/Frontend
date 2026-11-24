@@ -41,7 +41,7 @@ export function rutaDeImagen(carpeta: string | null | undefined, valor: string |
       height: 100%;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #e3f1ea, #fdf0d9);
+      background: linear-gradient(135deg, #efebe0, #e5ede8);
       color: #6f8f7d;
     }
     .marcador mat-icon {

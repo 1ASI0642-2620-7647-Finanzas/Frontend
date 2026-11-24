@@ -8,28 +8,49 @@ html {
       tertiary: mat.$orange-palette,
     ),
     typography: (
-      plain-family: 'Nunito, "Segoe UI", Roboto, sans-serif',
-      brand-family: 'Nunito, "Segoe UI", Roboto, sans-serif',
+      plain-family: 'Inter, "Segoe UI", Roboto, sans-serif',
+      brand-family: 'Newsreader, Georgia, serif',
     ),
     density: 0,
   ));
 }
 
+/* Diseño editorial: papel cálido, tinta oscura, verde profundo como único acento y líneas finas en vez de sombras. */
+html {
+  --mat-sys-primary: #1e4a38;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #dfe9e2;
+  --mat-sys-on-primary-container: #10291d;
+  --mat-sys-secondary-container: #ebe6d9;
+  --mat-sys-on-secondary-container: #17140f;
+  --mat-sys-surface: #ffffff;
+  --mat-sys-background: #faf8f4;
+  --mat-sys-outline: #bdb7a6;
+  --mat-sys-outline-variant: #e4dfd3;
+  --mat-button-filled-container-shape: 999px;
+  --mat-button-outlined-container-shape: 999px;
+  --mat-button-text-container-shape: 999px;
+  --mat-button-protected-container-shape: 999px;
+  --mat-form-field-outlined-container-shape: 8px;
+  --mat-form-field-filled-container-shape: 8px;
+}
+
 :root {
-  --fondo: #f6f5f0;
+  --fondo: #faf8f4;
   --superficie: #ffffff;
-  --borde: #e2e0d6;
-  --texto: #1d2b24;
-  --texto-suave: #5d6b63;
-  --verde: #1f6f4a;
-  --verde-suave: #e3f1ea;
-  --ambar: #d98a1c;
-  --ambar-suave: #fdf0d9;
-  --rojo: #b3261e;
-  --rojo-suave: #fbe7e5;
-  --azul-suave: #e6eef8;
-  --radio: 14px;
-  --sombra: 0 1px 2px rgba(29, 43, 36, 0.06), 0 4px 14px rgba(29, 43, 36, 0.06);
+  --borde: #e4dfd3;
+  --texto: #17140f;
+  --texto-suave: #6b6558;
+  --verde: #1e4a38;
+  --verde-suave: #e5ede8;
+  --ambar: #a8751c;
+  --ambar-suave: #f6ecd6;
+  --rojo: #a3261f;
+  --rojo-suave: #f8e6e3;
+  --azul-suave: #e8edf2;
+  --radio: 10px;
+  --sombra: none;
+  --serif: Newsreader, Georgia, 'Times New Roman', serif;
 }
 
 * {
@@ -45,30 +66,47 @@ body {
 body {
   background: var(--fondo);
   color: var(--texto);
-  font-family: Nunito, 'Segoe UI', Roboto, sans-serif;
+  font-family: Inter, 'Segoe UI', Roboto, sans-serif;
   font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3 {
   margin: 0;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 h1 {
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+/* Rótulo pequeño en mayúsculas, típico de las revistas. */
+.sobretitulo {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
 }
 
 .pagina {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 20px 16px 48px;
+  padding: 32px 24px 64px;
 }
 
 .pagina-encabezado {
@@ -77,7 +115,7 @@ h2 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .pagina-encabezado p {
@@ -129,15 +167,18 @@ h2 {
 
 .kpi .etiqueta {
   color: var(--texto-suave);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
 }
 
 .kpi .valor {
-  font-size: 1.55rem;
-  font-weight: 800;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .kpi .nota {
@@ -159,8 +200,10 @@ h2 {
   gap: 4px;
   padding: 2px 10px;
   border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   background: var(--verde-suave);
   color: var(--verde);
   white-space: nowrap;
@@ -202,19 +245,20 @@ table.tabla {
 
 table.tabla th {
   text-align: left;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
   color: var(--texto-suave);
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--borde);
-  background: #faf9f4;
+  background: #f5f2ea;
   white-space: nowrap;
 }
 
 table.tabla td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #efede4;
+  padding: 12px 14px;
+  border-bottom: 1px solid #efebe0;
   vertical-align: middle;
 }
 
@@ -267,7 +311,9 @@ table.tabla tr:last-child td {
 .formulario-seccion {
   grid-column: 1 / -1;
   margin: 8px 0 12px;
-  font-weight: 800;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--verde);
   border-bottom: 1px solid var(--borde);
   padding-bottom: 4px;
@@ -327,7 +373,8 @@ mat-form-field {
 }
 
 .mat-mdc-dialog-container {
-  --mdc-dialog-container-shape: 18px;
+  --mdc-dialog-container-shape: 12px;
+  --mat-dialog-container-shape: 12px;
 }
 
 .mat-mdc-dialog-content {
@@ -346,4 +393,15 @@ mat-form-field {
   .tarjeta {
     padding: 14px;
   }
+}
+
+/* Paneles desplegables y chips más sobrios */
+.mat-expansion-panel {
+  box-shadow: none !important;
+  border: 1px solid var(--borde);
+  border-radius: 10px !important;
+}
+
+.mat-mdc-chip-option {
+  --mat-chip-container-shape-radius: 999px;
 }

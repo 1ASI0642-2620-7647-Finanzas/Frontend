@@ -18,7 +18,7 @@ export interface SerieGrafico {
   color?: string;
 }
 
-const PALETA = ['#1f6f4a', '#d98a1c', '#2f6fb0', '#b3261e', '#7a5aa6', '#4e9a8c'];
+const PALETA = ['#1e4a38', '#a8751c', '#2c4a6b', '#a3261f', '#6b5a7d', '#5d8a7a'];
 
 /**
  * Envoltorio de Chart.js para barras, líneas y anillos, con la paleta de la aplicación.
@@ -109,7 +109,7 @@ export class Grafico implements OnDestroy {
           ? {}
           : {
               x: { stacked: this.apilado(), grid: { display: false } },
-              y: { stacked: this.apilado(), beginAtZero: true, grid: { color: '#ecebe2' } },
+              y: { stacked: this.apilado(), beginAtZero: true, grid: { color: '#ece8dc' } },
             },
       },
     };

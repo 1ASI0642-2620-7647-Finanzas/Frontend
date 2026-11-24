@@ -87,9 +87,9 @@ import { IdentidadStore } from '../../aplicacion/identidad-store';
       place-items: center;
       padding: 24px 16px;
       background:
-        linear-gradient(160deg, rgba(227, 241, 234, 0.92), rgba(246, 245, 240, 0.9) 60%),
+        linear-gradient(160deg, rgba(250, 248, 244, 0.95), rgba(243, 239, 229, 0.92)),
         url('/assets/fondos/ingreso.jpg') center / cover no-repeat,
-        #e3f1ea;
+        #faf8f4;
     }
     .columna {
       width: 100%;
@@ -107,11 +107,12 @@ import { IdentidadStore } from '../../aplicacion/identidad-store';
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 800;
-      color: var(--verde);
+      font-family: var(--serif);
+      font-weight: 500;
+      color: var(--texto);
       text-decoration: none;
       justify-content: center;
-      font-size: 1.15rem;
+      font-size: 1.5rem;
     }
     form {
       display: flex;

@@ -88,7 +88,7 @@ const ETIQUETAS: Record<string, string> = {
         <mat-tab label="Ventas por producto">
           <div class="contenido">
             <section class="tarjeta">
-              <app-grafico tipo="bar" [horizontal]="true" [etiquetas]="nombresProductos()" [series]="[{ nombre: 'Ventas', valores: montosProductos(), color: '#d98a1c' }]" descripcion="Ventas por producto" />
+              <app-grafico tipo="bar" [horizontal]="true" [etiquetas]="nombresProductos()" [series]="[{ nombre: 'Ventas', valores: montosProductos(), color: '#a8751c' }]" descripcion="Ventas por producto" />
             </section>
             <div class="tabla-contenedor">
               <table class="tabla">
@@ -107,7 +107,7 @@ const ETIQUETAS: Record<string, string> = {
           <div class="contenido">
             <section class="tarjeta">
               <app-grafico tipo="bar" [apilado]="true" [etiquetas]="mesesIntereses()"
-                [series]="[{ nombre: 'Compensatorios', valores: compensatorios(), color: '#1f6f4a' }, { nombre: 'Mora', valores: moras(), color: '#b3261e' }]"
+                [series]="[{ nombre: 'Compensatorios', valores: compensatorios(), color: '#1e4a38' }, { nombre: 'Mora', valores: moras(), color: '#a3261f' }]"
                 descripcion="Intereses cobrados por mes" />
             </section>
             <div class="tabla-contenedor">

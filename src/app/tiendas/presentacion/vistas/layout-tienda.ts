@@ -22,7 +22,7 @@ import { bannerDeGiro, etiquetasDeOferta, nombreDeGiro } from '../../dominio/mod
         @if (tienda(); as t) {
           <div class="logo"><app-imagen carpeta="logos" [src]="t.logo" icono="storefront" [alt]="t.nombre" /></div>
           <div class="datos">
-            <h1>{{ t.nombre }} <span class="etiqueta-estado neutra giro">{{ giro() }}</span></h1>
+            <h1>{{ t.nombre }}</h1>
             <span class="texto-suave">
               {{ t.direccion }}
               @if (t.telefono) { · <mat-icon inline>call</mat-icon> {{ t.telefono }} }
@@ -66,7 +66,8 @@ import { bannerDeGiro, etiquetasDeOferta, nombreDeGiro } from '../../dominio/mod
   `,
   styles: `
     .cabecera {
-      background: #fff;
+      background: rgba(250, 248, 244, 0.92);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--borde);
       position: sticky;
       top: 0;
@@ -75,10 +76,10 @@ import { bannerDeGiro, etiquetasDeOferta, nombreDeGiro } from '../../dominio/mod
     .contenido {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 10px 16px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
     }
     .volver {
@@ -87,22 +88,18 @@ import { bannerDeGiro, etiquetasDeOferta, nombreDeGiro } from '../../dominio/mod
       place-items: center;
     }
     .logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       overflow: hidden;
       flex: none;
+      border: 1px solid var(--borde);
     }
     .datos h1 {
-      font-size: 1.15rem;
+      font-size: 1.3rem;
     }
     .datos span {
-      font-size: 0.85rem;
-    }
-    .datos .giro {
-      font-size: 0.7rem;
-      vertical-align: middle;
-      margin-left: 4px;
+      font-size: 0.82rem;
     }
     nav {
       display: flex;
@@ -114,32 +111,35 @@ import { bannerDeGiro, etiquetasDeOferta, nombreDeGiro } from '../../dominio/mod
       background: var(--verde-suave);
     }
     .banner {
-      background-color: #17402d;
+      background-color: #17140f;
       background-size: cover;
       background-position: center;
       color: #fff;
-      padding: 34px 20px;
+      padding: 72px 24px 56px;
     }
     .banner-texto {
       max-width: 1240px;
       margin: 0 auto;
     }
     .banner-texto h2 {
-      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
-      margin: 6px 0;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.03em;
+      margin: 12px 0;
     }
     .banner-texto p {
       margin: 0;
-      color: #e6f2eb;
+      max-width: 520px;
+      font-size: 1.05rem;
+      color: #ece7da;
     }
     .banner-giro {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 999px;
-      padding: 2px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #ece7da;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      padding-bottom: 3px;
     }
   `,
 })
@@ -155,7 +155,7 @@ export class LayoutTienda {
   protected readonly etiquetas = computed(() => etiquetasDeOferta(this.tienda()?.giro));
   protected readonly fondoBanner = computed(
     () =>
-      `linear-gradient(90deg, rgba(23, 64, 45, 0.88), rgba(23, 64, 45, 0.45)), url(/assets/fondos/banner-${bannerDeGiro(this.tienda()?.giro)}.jpg)`,
+      `linear-gradient(90deg, rgba(23, 20, 15, 0.82), rgba(23, 20, 15, 0.3)), url(/assets/fondos/banner-${bannerDeGiro(this.tienda()?.giro)}.jpg)`,
   );
   protected readonly esClienteDeEstaTienda = computed(() => {
     const s = this.identidad.sesion();
